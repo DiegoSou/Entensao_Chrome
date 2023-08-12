@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "version": "0.0.1",
+    "name": "Utilitários do Chrome",
+    "description": "Conjunto de scripts uteis no dia a dia",
+    "author": "Diego",
+    "browser_action": {
+        "default_title": "Utilitários do Chrome",
+        "default_popup": "index.html"
+    }
+}
