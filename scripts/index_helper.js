@@ -191,13 +191,15 @@ const helper = {
         let map = {}; 
         let deletedKeys = {};
     
-        for (let v of listDuplicates)
+        for (let textLine of listDuplicates)
         {
+            textLine = textLine.trim();
+
             let key;
-    
-            if (toUpper) { key = v.toUpperCase(); }
-            if (toLower) { key = v.toLowerCase(); }
-            if (!toUpper && !toLower) { key = v; }
+
+            if (toUpper) { key = textLine.toUpperCase(); }
+            if (toLower) { key = textLine.toLowerCase(); }
+            if (!toUpper && !toLower) { key = textLine; }
     
             if ((map.hasOwnProperty(key) || deletedKeys.hasOwnProperty(key)) && !keep1) 
             {
@@ -206,8 +208,8 @@ const helper = {
                 continue;
             }
     
-            if (toUpper) { map[v.toUpperCase()] = ""; continue; }
-            if (toLower) { map[v.toLowerCase()] = ""; continue; }
+            if (toUpper) { map[textLine.toUpperCase()] = ""; continue; }
+            if (toLower) { map[textLine.toLowerCase()] = ""; continue; }
             if (!toUpper && !toLower) { map[key] = ""; continue; }
         }
         
