@@ -168,10 +168,11 @@ const helper = {
         const toUpper = document.getElementById("inputCaseUpper").checked;
         const toLower = document.getElementById("inputCaseLower").checked;
         const keep1 = document.getElementById("inputKeepOne").checked;
+        const alphabeticalOrder = document.getElementById("inputAlphabeticalOrder").checked;
 
         // filter action
         let outputBeforeValues = input.value.split("\n");
-        let outputAfterValues = helper.removeDuplicatesFromList(outputBeforeValues, toUpper, toLower, keep1);
+        let outputAfterValues = helper.removeDuplicatesFromList(outputBeforeValues, toUpper, toLower, keep1, alphabeticalOrder);
 
         // result
         let outputAfterResult = document.getElementById("duplicates-output-result");
@@ -186,7 +187,7 @@ const helper = {
         document.getElementById("duplicates-output-btn").click();
     },
 
-    removeDuplicatesFromList: function (listDuplicates, toUpper, toLower, keep1) 
+    removeDuplicatesFromList: function (listDuplicates, toUpper, toLower, keep1, alphabeticalOrder) 
     {
         let map = {}; 
         let deletedKeys = {};
@@ -212,6 +213,9 @@ const helper = {
             if (toLower) { map[textLine.toLowerCase()] = ""; continue; }
             if (!toUpper && !toLower) { map[key] = ""; continue; }
         }
+        
+        if (alphabeticalOrder)
+            return Object.keys(map).sort();
         
         return Object.keys(map);
     }
