@@ -5,13 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilitários do Chrome</title>
 
-    <link rel="stylesheet" href="index_style.css">
-
-    <script src="jquery.min.js"></script>
-    <script src="index_controller.js"></script>
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/notes_style.css">
+ 
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/index_helper.js"></script>
+    <script src="scripts/index_controller.js"></script>
+    <script src="scripts/notes_controller.js"></script>
 </head>
 <body>
     <!-- COMPONENTES -->
-    <div id="debug-csv-component"></div>
+    <div class="component-container">
+
+        <div class="component-icon-container">
+            <div id="notes-component" class="component-icon" data-contentid="notes-content" title="Anotações"></div>
+            <div id="copies-component" class="component-icon" data-contentid="copies-content" title="Remover duplicados"></div>
+            <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" title="Comparar textos"></div>
+            <div id="csvs-component" class="component-icon" data-contentid="csvs-content" title="Analisar csv"></div>
+
+            <input id="choose-color-input" type="color" style="width: 20px; height: 20px; border: unset; cursor: pointer;" title="Escolher tema">
+        </div>
+
+        <div class="component-content-container">
+            
+            <!-- NOTES -->
+            <div id="notes-content" class="component-content hidden">
+                
+                <div style="width: fit-content;">
+                    <button id="new-note-btn" class="note-control-button" data-contentid="new-note-section">Nova</button>
+                    <button id="history-notes-btn" class="note-control-button" data-contentid="history-notes-section">Histórico</button>
+
+                    <button id="export-notes-btn" class="note-control-button">Exportar</button>
+                    <button id="import-notes-btn" class="note-control-button">Importar</button>
+                </div>
+
+                <section id="new-note-section" class="note-section hidden">
+                    <article id="new-note-article" class="note-article">
+                        <input type="text" id="new-note-title" class="new-note-title" placeholder="Título" autocomplete="none">
+                        <textarea id="new-note-text" class="new-note-text" placeholder="Descrição" autocomplete="none"></textarea>
+                        
+                        <input id="new-note-attach-img" type="image" alt="" style="max-width: 90%; max-height: 90%; margin: 5px; align-self: center;">
+
+                        <label id="new-note-attach-file-label" for="new-note-attach-file">Nenhum arquivo selecionado</label>
+                        <input id="new-note-attach-file" type="file" style="visibility: hidden; width: 0">
+
+                        <div class="new-note-buttons">
+                            <button id="new-note-clear">Limpar</button>
+                            <button id="new-note-save">Salvar</button>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="history-notes-section" class="note-section hidden">
+                    <article id="history-notes-article" class="note-article">
+                        
+                        <!-- local storage notes -->
+                    
+                    </article>
+                </section>
+            </div>
+            <!-- END NOTES -->
+
+            <!-- COPIES -->
+            <div id="copies-content" class="component-content hidden">
+                
+            </div>
+            <!-- END COPIES -->
+
+            <!-- DUPLICATES -->
+            <div id="duplicates-content" class="component-content hidden">
+                
+            </div>
+            <!-- END DUPLICATES -->
+
+            <!-- CSVS -->
+            <div id="csvs-content" class="component-content hidden">
+                
+            </div>
+            <!-- END CSVS -->
+            
+        </div>
+
+    </div>
 </body>
 </html>
