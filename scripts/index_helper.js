@@ -189,6 +189,7 @@ const helper = {
     removeDuplicatesFromList: function (listDuplicates, toUpper, toLower, keep1) 
     {
         let map = {}; 
+        let deletedKeys = {};
     
         for (let v of listDuplicates)
         {
@@ -198,7 +199,12 @@ const helper = {
             if (toLower) { key = v.toLowerCase(); }
             if (!toUpper && !toLower) { key = v; }
     
-            if (map.hasOwnProperty(key) && !keep1) { delete map[key]; continue; }
+            if ((map.hasOwnProperty(key) || deletedKeys.hasOwnProperty(key)) && !keep1) 
+            {
+                deletedKeys[key] = "";
+                delete map[key];
+                continue;
+            }
     
             if (toUpper) { map[v.toUpperCase()] = ""; continue; }
             if (toLower) { map[v.toLowerCase()] = ""; continue; }
