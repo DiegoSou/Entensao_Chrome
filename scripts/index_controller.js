@@ -10,13 +10,13 @@ $( document ).ready(
                     "notes.png",
                     "notes-content"
                 ],
-                "copies-component": [
-                    "copies.png",
-                    "copies-content"
-                ],
                 "duplicates-component": [
                     "duplicates.png",
                     "duplicates-content"
+                ],
+                "compare-text-component": [
+                    "compare-text.png",
+                    "compare-text-content"
                 ],
                 "csvs-component": [
                     "csvs.png",

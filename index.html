@@ -7,11 +7,13 @@
 
     <link rel="stylesheet" href="styles/index_style.css">
     <link rel="stylesheet" href="styles/notes_style.css">
+    <link rel="stylesheet" href="styles/duplicates_style.css">
  
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/index_helper.js"></script>
     <script src="scripts/index_controller.js"></script>
     <script src="scripts/notes_controller.js"></script>
+    <script src="scripts/duplicates_controller.js"></script>
 </head>
 <body>
     <!-- COMPONENTES -->
@@ -19,8 +21,8 @@
 
         <div class="component-icon-container">
             <div id="notes-component" class="component-icon" data-contentid="notes-content" title="Anotações"></div>
-            <div id="copies-component" class="component-icon" data-contentid="copies-content" title="Remover duplicados"></div>
-            <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" title="Comparar textos"></div>
+            <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" title="Remover duplicados"></div>
+            <div id="compare-text-component" class="component-icon" data-contentid="compare-text-content" title="Comparar textos"></div>
             <div id="csvs-component" class="component-icon" data-contentid="csvs-content" title="Analisar csv"></div>
 
             <input id="choose-color-input" type="color" style="width: 20px; height: 20px; border: unset; cursor: pointer;" title="Escolher tema">
@@ -31,6 +33,7 @@
             <!-- NOTES -->
             <div id="notes-content" class="component-content hidden">
                 
+                <!-- control section buttons -->
                 <div style="width: fit-content;">
                     <button id="new-note-btn" class="note-control-button" data-contentid="new-note-section">Nova</button>
                     <button id="history-notes-btn" class="note-control-button" data-contentid="history-notes-section">Histórico</button>
@@ -39,6 +42,7 @@
                     <button id="import-notes-btn" class="note-control-button">Importar</button>
                 </div>
 
+                <!-- section new note -->
                 <section id="new-note-section" class="note-section hidden">
                     <article id="new-note-article" class="note-article">
                         <input type="text" id="new-note-title" class="new-note-title" placeholder="Título" autocomplete="none">
@@ -56,6 +60,7 @@
                     </article>
                 </section>
 
+                <!-- section history -->
                 <section id="history-notes-section" class="note-section hidden">
                     <article id="history-notes-article" class="note-article">
                         
@@ -66,17 +71,62 @@
             </div>
             <!-- END NOTES -->
 
-            <!-- COPIES -->
-            <div id="copies-content" class="component-content hidden">
-                
-            </div>
-            <!-- END COPIES -->
-
             <!-- DUPLICATES -->
             <div id="duplicates-content" class="component-content hidden">
                 
+                <!-- control section buttons -->
+                <div style="width: fit-content;">
+                    <button id="duplicates-input-btn" class="duplicates-control-button" data-contentid="duplicates-input-section">Input</button>
+                    <button id="duplicates-output-btn" class="duplicates-control-button" data-contentid="duplicates-output-section">Output</button>
+                </div>
+                
+                <!-- section input -->
+                <section id="duplicates-input-section" class="duplicates-section hidden">
+                    <article id="duplicates-input-article" class="duplicates-article">
+                        <div>
+                            <span>Valores em:</span>
+
+                            <input type="radio" id="inputCaseUpper" name="inputCase" checked />
+                            <label for="inputCaseUpper">Maiúsculo</label>
+                        
+                            <input type="radio" id="inputCaseLower" name="inputCase" />
+                            <label for="inputCaseLower">Minúsculo</label>
+                        </div>
+
+                        <textarea id="duplicates-input-text" class="duplicates-input-text" placeholder="Coloque a lista de valores aqui" autocomplete="none"></textarea>
+
+                        <div>
+                            <input type="checkbox" id="inputKeepOne" name="inputKeepOne" />
+                            <label for="inputKeepOne">Manter pelo menos 1 valor</label>
+                        </div>
+
+                        <button id="duplicates-input-ok">Ok</button>
+                    </article>
+                </section>
+
+                <!-- section output -->
+                <section id="duplicates-output-section" class="duplicates-section hidden">
+                    <article id="duplicates-output-article" class="duplicates-article">
+                        
+                        <span id="duplicates-output-before"></span>
+                        <span id="duplicates-output-after"></span>
+                        
+                        <div id="duplicates-output-result" style="background-color: rgba(255, 255, 255, 0.285); margin: 2% 0; padding: 2%;">
+                            
+                            <!-- filtered duplicates -->
+
+                        </div>
+                    </article>
+                </section>
+
             </div>
             <!-- END DUPLICATES -->
+
+            <!-- COMPARE TEXT -->
+            <div id="compare-text-content" class="component-content hidden">
+                
+            </div>
+            <!-- END COMPARE TEXT -->
 
             <!-- CSVS -->
             <div id="csvs-content" class="component-content hidden">

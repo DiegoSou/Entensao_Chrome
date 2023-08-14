@@ -33,6 +33,7 @@ $( document ).ready(
         // auto triggers
         //
 
+        $( "#notes-component" ).children()[0].click();
         $( "#new-note-btn" ).trigger("click");
     }
 );
@@ -57,6 +58,9 @@ function buildNoteCardItem(index, title, description, fileBase64)
         $("<div>", {style: "display: flex; border: 1px solid rgba(36, 36, 36, 0.181); border-radius: 4px; padding: 2%; margin: 1%;"})
         .append(
             $("<input>", {type: "image", alt: "", src: fileBase64, style: "max-width: 20%; max-height: 20%; margin: 5px; align-self: center;"})
+            .on("click", function () {
+                window.open().document.write('<iframe src="' + fileBase64 + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>')
+            })
         )
         .append(
             $("<div>", {style: "display: flex; flex-direction: column;"})

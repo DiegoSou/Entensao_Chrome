@@ -1,11 +1,23 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "version": "0.0.1",
-    "name": "Utilitários do Chrome",
+    "name": "Ajudante",
     "description": "Conjunto de scripts uteis no dia a dia",
-    "author": "Diego",
-    "browser_action": {
-        "default_title": "Utilitários do Chrome",
-        "default_popup": "index.html"
-    }
+    "author": "diego",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "./pictures/reeves.png",
+            "32": "./pictures/reeves.png",
+            "48": "./pictures/reeves.png",
+            "128": "./pictures/reeves.png"
+        }
+    },
+    "icons": {
+        "16": "./pictures/reeves.png",
+        "32": "./pictures/reeves.png",
+        "48": "./pictures/reeves.png",
+        "128": "./pictures/reeves.png"
+    },
+    "permissions": ["storage"]
 }

@@ -1,0 +1,53 @@
+.duplicates-control-button
+{
+    cursor: pointer;
+    appearance: unset;
+    border: none;
+    background: transparent;
+    font-size: small;
+    font-family: system-ui;
+}
+
+.duplicates-control-button-active
+{
+    background-color: #4b4b4b26;
+}
+
+#duplicates-input-section,
+#duplicates-output-section
+{
+    display: flex;
+    justify-content: center;
+
+    padding: 3%;
+    height: 100%;
+}
+
+#duplicates-input-article
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-size: 90%;
+
+    flex-grow: 1;
+    height: 100%;
+}
+
+#duplicates-output-article
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-size: 90%;
+
+    flex-grow: 1;
+    height: 100%;   
+}
+
+#duplicates-input-text
+{
+    resize: vertical;
+}

@@ -155,5 +155,56 @@ const helper = {
         });
         
         input.click();
+    },
+
+    //
+    // DUPLICATES
+    //
+
+    duplicatesInputOkHandler: function()
+    {
+        let input = document.getElementById("duplicates-input-text");
+
+        const toUpper = document.getElementById("inputCaseUpper").checked;
+        const toLower = document.getElementById("inputCaseLower").checked;
+        const keep1 = document.getElementById("inputKeepOne").checked;
+
+        // filter action
+        let outputBeforeValues = input.value.split("\n");
+        let outputAfterValues = helper.removeDuplicatesFromList(outputBeforeValues, toUpper, toLower, keep1);
+
+        // result
+        let outputAfterResult = document.getElementById("duplicates-output-result");
+        outputAfterResult.innerHTML = outputAfterValues.join("<br>");
+
+        // counts before/after
+        let outputBeforeCount = document.getElementById("duplicates-output-before");
+        let outputAfterCount = document.getElementById("duplicates-output-after");
+        outputBeforeCount.innerHTML = 'Antes: ' + Number(outputBeforeValues.length);
+        outputAfterCount.innerHTML = 'Depois: ' + Number(outputAfterValues.length);
+
+        document.getElementById("duplicates-output-btn").click();
+    },
+
+    removeDuplicatesFromList: function (listDuplicates, toUpper, toLower, keep1) 
+    {
+        let map = {}; 
+    
+        for (let v of listDuplicates)
+        {
+            let key;
+    
+            if (toUpper) { key = v.toUpperCase(); }
+            if (toLower) { key = v.toLowerCase(); }
+            if (!toUpper && !toLower) { key = v; }
+    
+            if (map.hasOwnProperty(key) && !keep1) { delete map[key]; continue; }
+    
+            if (toUpper) { map[v.toUpperCase()] = ""; continue; }
+            if (toLower) { map[v.toLowerCase()] = ""; continue; }
+            if (!toUpper && !toLower) { map[key] = ""; continue; }
+        }
+        
+        return Object.keys(map);
     }
 }
