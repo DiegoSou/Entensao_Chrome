@@ -178,6 +178,8 @@ const helper = {
         let outputAfterResult = document.getElementById("duplicates-output-result");
         outputAfterResult.innerHTML = outputAfterValues.join("<br>");
 
+        navigator.clipboard.writeText(outputAfterValues.join("\n"));
+
         // counts before/after
         let outputBeforeCount = document.getElementById("duplicates-output-before");
         let outputAfterCount = document.getElementById("duplicates-output-after");
