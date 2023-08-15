@@ -45,7 +45,7 @@
 {
     height: 10%;
     padding: 1%;
-    font-size: 90%;
+    font-size: 115%;
     font-family: monospace;
 }
 
@@ -53,7 +53,7 @@
 {
     height: 20%;
     padding: 1%;
-    font-size: 95%;
+    font-size: 115%;
 
     resize: vertical;
 }

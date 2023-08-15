@@ -98,7 +98,7 @@ const helper = {
     {
         if(confirm("Deseja limpar todo o histórico de anotações?") == true)
         {
-            for (let i=1; i <= Number(localStorage.getItem('notes-count')); i++)
+            for (let i=1; i <= Number(localStorage.getItem('notes-count'))+1; i++)
             {
                 localStorage.removeItem('annotation'+i+'-info');
                 localStorage.removeItem('annotation'+i+'-file');
@@ -142,8 +142,9 @@ const helper = {
         input.addEventListener("change", function () {
             let reader = new FileReader();
             reader.onload = (e) => {
-                const content = JSON.parse(e.target.result);
+                localStorage.setItem('notes-count', 0);
 
+                const content = JSON.parse(e.target.result);
                 for (let k of Object.keys(content))
                 {
                     localStorage.setItem(k, content[k]);
