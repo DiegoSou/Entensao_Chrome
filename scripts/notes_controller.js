@@ -35,6 +35,7 @@ $( document ).ready(
 
         $( "#notes-component" ).children()[0].click();
         $( "#new-note-btn" ).trigger("click");
+        $( "#new-note-title" ).trigger("focus");
     }
 );
 
@@ -72,11 +73,11 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
             .append(
                 $("<div>", {style: "display: flex; flex-direction: column;"})
                 .append(
-                    $("<span>", {style: "font-size: 110%; font-family: monospace; padding: 0 2%;"})
+                    $("<span>", {style: "font-size: 120%; font-family: monospace; padding: 0 2%;"})
                     .text(title)
                 )
                 .append(
-                    $("<span>", {style: "font-size: 100%; font-family: monospace; padding: 2%;"})
+                    $("<span>", {style: "font-size: 118%; font-family: monospace; padding: 2%;"})
                     .text(description)
                 )
             )
