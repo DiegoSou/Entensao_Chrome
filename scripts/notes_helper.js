@@ -21,6 +21,7 @@ $( document ).ready(function ()
                 notes_helper.loadTextIntoNotesInput(clipboard_text);
             }
         },
+
         loadFilesIntoNotesInput: function (files)
         {   
             let fileInput = document.getElementById('new-note-attach-file');
@@ -28,6 +29,7 @@ $( document ).ready(function ()
 
             notes_helper.changeFileNotesInputHandler();
         },
+
         changeFileNotesInputHandler: function ()
         {
             let fileInput = document.getElementById('new-note-attach-file');
@@ -52,6 +54,7 @@ $( document ).ready(function ()
                 }
             }
         },
+
         loadTextIntoNotesInput: function (text)
         {
             let descriptionInput = document.getElementById('new-note-text');
@@ -93,6 +96,7 @@ $( document ).ready(function ()
 
             reader.readAsDataURL(file.files[0] ? file.files[0] : new Blob());                
         },
+        
         newNoteClearHandler: function ()
         {
             if(confirm("Deseja limpar todo o histórico de anotações?") == true)
