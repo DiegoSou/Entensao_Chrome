@@ -5,6 +5,16 @@
     "description": "Conjunto de scripts uteis no dia a dia",
     "author": "diego",
 
+    "permissions": [
+      "tabs",
+      "storage",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "http://*/",
+      "https://*/"
+    ],
+
     "background": {
         "service_worker": "service-worker.js"
     },
@@ -35,7 +45,5 @@
         "32": "./pictures/reeves.png",
         "48": "./pictures/reeves.png",
         "128": "./pictures/reeves.png"
-    },
-
-    "permissions": ["storage"]
+    }
 }

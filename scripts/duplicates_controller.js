@@ -15,7 +15,7 @@ $( document ).ready(
                 $( ("#"+this.dataset.contentid) ).removeClass("hidden");
             }
         );
-        $( "#duplicates-input-ok" ).on("click", helper.duplicatesInputOkHandler);
+        $( "#duplicates-input-ok" ).on("click", duplicates_helper.duplicatesInputOkHandler);
 
         //
         // auto triggers

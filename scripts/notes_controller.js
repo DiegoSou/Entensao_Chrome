@@ -5,7 +5,7 @@ $( document ).ready(
         // handlers
         //
 
-        $( document ).on("paste", helper.notesPasteHandler);
+        $( document ).on("paste", notes_helper.notesPasteHandler);
         $( ".note-control-button" ).on("click", 
             function () 
             {
@@ -22,12 +22,12 @@ $( document ).ready(
             }
         );
 
-        $( "#new-note-attach-file" ).on("change", helper.changeFileNotesInputHandler);
-        $( "#new-note-save" ).on("click", helper.newNoteSaveHandler);
-        $( "#new-note-clear" ).on("click", helper.newNoteClearHandler);
+        $( "#new-note-attach-file" ).on("change", notes_helper.changeFileNotesInputHandler);
+        $( "#new-note-save" ).on("click", notes_helper.newNoteSaveHandler);
+        $( "#new-note-clear" ).on("click", notes_helper.newNoteClearHandler);
         
-        $( "#export-notes-btn" ).on("click", helper.generateExportFile);
-        $( "#import-notes-btn" ).on("click", helper.importNoteFile);
+        $( "#export-notes-btn" ).on("click", notes_helper.generateExportFile);
+        $( "#import-notes-btn" ).on("click", notes_helper.importNoteFile);
 
         //
         // auto triggers
@@ -50,7 +50,7 @@ function buildHistoryNotesSection()
         if (!item.startsWith('annotation')) continue; // only annotations
         
         // get index by info || file
-        let annotationIndex = helper.getAnnotationIndex(item);
+        let annotationIndex = notes_helper.getAnnotationIndex(item);
 
         // check/ add to pass by
         if (passBy.has(annotationIndex)) continue; passBy.add(annotationIndex);
