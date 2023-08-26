@@ -42,13 +42,24 @@ $( document ).ready(
 function buildHistoryNotesSection()
 {
     $( "#history-notes-article" ).empty();
-    for (let i=1; i <= Number(localStorage.getItem('notes-count'))+1; i++)
-    {
-        let info = JSON.parse(localStorage.getItem('annotation'+i+'-info'));
-        let file = localStorage.getItem('annotation'+i+'-file');
 
-        if (!info || !file) continue;
-        buildNoteCardItem(info.index, info.title, info.description, info.checked, file)
+    let passBy = new Set();
+
+    for (let item of Object.keys(localStorage))
+    {
+        if (!item.startsWith('annotation')) continue; // only annotations
+        
+        // get index by info || file
+        let annotationIndex = helper.getAnnotationIndex(item);
+
+        // check/ add to pass by
+        if (passBy.has(annotationIndex)) continue; passBy.add(annotationIndex);
+
+        // get data
+        let info = JSON.parse(localStorage.getItem('annotation'+annotationIndex+'-info'));
+        let file = localStorage.getItem('annotation'+annotationIndex+'-file');
+
+        buildNoteCardItem(info.index, info.title, info.description, info.checked, file);
     }
 }
 
@@ -89,12 +100,11 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
             .append(
                 $("<input>", {type: "image", alt: "trash", src: "../pictures/trash.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-start;"})
                 .on("click", function () {
-                    localStorage.removeItem(index+'-info');
-                    localStorage.removeItem(index+'-file');
-                    localStorage.setItem("notes-count", Number(localStorage.getItem("notes-count"))-1);
-
                     if (confirm("Excluir anotação?"))
                     {
+                        localStorage.removeItem(index+'-info');
+                        localStorage.removeItem(index+'-file');
+
                         $(this).parent().parent().remove();
                     } 
                 })

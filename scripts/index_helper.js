@@ -61,9 +61,9 @@ const helper = {
 
     newNoteSaveHandler: function ()
     {
-        localStorage.setItem('notes-count', Number(localStorage.getItem('notes-count'))+1);
+        localStorage.setItem('notes-lastId', Number(localStorage.getItem('notes-lastId'))+1);
 
-        let index = ('annotation'+(localStorage.getItem('notes-count')));
+        let index = ('annotation' + (localStorage.getItem('notes-lastId')));
         let title = document.getElementById("new-note-title");
         let description = document.getElementById("new-note-text");
         let file = document.getElementById("new-note-attach-file");
@@ -98,13 +98,15 @@ const helper = {
     {
         if(confirm("Deseja limpar todo o histórico de anotações?") == true)
         {
-            for (let i=1; i <= Number(localStorage.getItem('notes-count'))+1; i++)
-            {
-                localStorage.removeItem('annotation'+i+'-info');
-                localStorage.removeItem('annotation'+i+'-file');
-            }
+            Object.keys(localStorage).forEach((item) => {
+                if (item.startsWith('annotation'))
+                {
+                    localStorage.removeItem(item);
+                }
+            });
+            
+            localStorage.setItem('notes-lastId', 0);
         }
-        localStorage.setItem('notes-count', 0);
     },
 
     generateExportFile: function ()
@@ -113,11 +115,12 @@ const helper = {
 
         let content = {}
 
-        for (let i=1; i <= Number(localStorage.getItem('notes-count')); i++)
-        {
-            content[('annotation'+i+'-info')] = localStorage.getItem(('annotation'+i+'-info'));
-            content[('annotation'+i+'-file')] = localStorage.getItem(('annotation'+i+'-file'));
-        }
+        Object.keys(localStorage).forEach((item) => {
+            if (item.startsWith('annotation'))
+            {
+                content[item] = localStorage.getItem(item);
+            }
+        });
 
         const file = new Blob([JSON.stringify(content)], { type: 'text/plain' });
 
@@ -132,6 +135,8 @@ const helper = {
             link.click();
             URL.revokeObjectURL(link.href);
         }
+
+        document.getElementById('new-note-btn').click();
     },
 
     importNoteFile: function ()
@@ -141,21 +146,35 @@ const helper = {
 
         input.addEventListener("change", function () {
             let reader = new FileReader();
+            
             reader.onload = (e) => {
-                localStorage.setItem('notes-count', 0);
+                localStorage.setItem('notes-lastId', 0);
 
                 const content = JSON.parse(e.target.result);
-                for (let k of Object.keys(content))
-                {
-                    localStorage.setItem(k, content[k]);
-                    localStorage.setItem('notes-count', Number(localStorage.getItem('notes-count'))+0.5);
-                }
-            }
+                
+                Object.keys(content).forEach((item) => {
+                    // set item
+                    localStorage.setItem(item, content[item]);
 
+                    // set last index for next notes
+                    let annotationIndex = helper.getAnnotationIndex(item);
+
+                    if (Number(localStorage.getItem('notes-lastId')) < annotationIndex)
+                    {
+                        localStorage.setItem('notes-lastId',  annotationIndex);
+                    }
+                });
+                
+                document.getElementById('history-notes-btn').click();
+            }
             reader.readAsText(input.files[0]);
         });
-        
         input.click();
+    },
+
+    getAnnotationIndex: function (item)
+    {
+        return Number(item.replace('annotation', '').replace('-info', '').replace('-file', ''));
     },
 
     //
