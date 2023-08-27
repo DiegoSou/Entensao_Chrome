@@ -34,6 +34,8 @@ $( document ).ready(
         // handlers
         //
         
+        $( "#open-in-tab-input" ).on("click", function (event) { open("../index.html"); });
+
         $( "#choose-color-input" ).on("change", function (event) {
             $( ".component-container" ).css("background-color", event.target.value);
             $( "#choose-color-input" ).css("background-color", event.target.value);
