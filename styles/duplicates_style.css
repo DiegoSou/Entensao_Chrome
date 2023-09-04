@@ -52,3 +52,10 @@
     height: 50%;
     resize: vertical;
 }
+
+#duplicates-output-result
+{
+    background-color: rgba(255, 255, 255, 0.285);
+    margin: 2% 0;
+    padding: 2%;
+}

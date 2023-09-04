@@ -9,20 +9,23 @@
     <link rel="stylesheet" href="styles/notes_style.css">
     <link rel="stylesheet" href="styles/duplicates_style.css">
  
+    <!-- libs -->
     <script src="scripts/jquery.min.js"></script>
 
+    <!-- helpers -->
     <script src="scripts/notes_helper.js"></script>
     <script src="scripts/duplicates_helper.js"></script>
     
+    <!-- controllers -->
     <script src="scripts/index_controller.js"></script>
-    
     <script src="scripts/notes_controller.js"></script>
     <script src="scripts/duplicates_controller.js"></script>
 </head>
+
 <body>
-    <!-- COMPONENTES -->
     <div class="component-container">
 
+        <!-- Page Control -->
         <div class="component-icon-container">
             <div id="notes-component" class="component-icon" data-contentid="notes-content" title="Anotações"></div>
             <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" title="Remover duplicados"></div>
@@ -35,16 +38,15 @@
             </div>
         </div>
 
+        <!-- Page Content -->
         <div class="component-content-container">
             
             <!-- NOTES -->
             <div id="notes-content" class="component-content hidden">
-                
-                <!-- control section buttons -->
+                <!-- control buttons -->
                 <div style="width: fit-content;">
                     <button id="new-note-btn" class="note-control-button" data-contentid="new-note-section">Nova</button>
                     <button id="history-notes-btn" class="note-control-button" data-contentid="history-notes-section">Histórico</button>
-
                     <button id="export-notes-btn" class="note-control-button">Exportar</button>
                     <button id="import-notes-btn" class="note-control-button">Importar</button>
                 </div>
@@ -54,12 +56,9 @@
                     <article id="new-note-article" class="note-article">
                         <input type="text" id="new-note-title" class="new-note-title" placeholder="Título" autocomplete="none">
                         <textarea id="new-note-text" class="new-note-text" placeholder="Descrição" autocomplete="none"></textarea>
-                        
                         <input id="new-note-attach-img" type="image" alt="" style="max-width: 90%; max-height: 90%; margin: 5px; align-self: center;">
-
                         <label id="new-note-attach-file-label" for="new-note-attach-file">Nenhum arquivo selecionado</label>
                         <input id="new-note-attach-file" type="file" style="visibility: hidden; width: 0">
-
                         <div class="new-note-buttons">
                             <button id="new-note-clear">Limpar</button>
                             <button id="new-note-save">Salvar</button>
@@ -68,44 +67,31 @@
                 </section>
 
                 <!-- section history -->
-                <section id="history-notes-section" class="note-section hidden">
-                    <article id="history-notes-article" class="note-article">
-                        
-                        <!-- local storage notes -->
-                    
-                    </article>
-                </section>
-
+                <section id="history-notes-section" class="note-section hidden"><article id="history-notes-article" class="note-article"></article></section>
             </div>
             <!-- END NOTES -->
 
             <!-- DUPLICATES -->
             <div id="duplicates-content" class="component-content hidden">
-                
-                <!-- control section buttons -->
+                <!-- control buttons -->
                 <div style="width: fit-content;">
                     <button id="duplicates-input-btn" class="duplicates-control-button" data-contentid="duplicates-input-section">Input</button>
                     <button id="duplicates-output-btn" class="duplicates-control-button" data-contentid="duplicates-output-section">Output</button>
                 </div>
                 
-                <!-- section input -->
+                <!-- section input text -->
                 <section id="duplicates-input-section" class="duplicates-section hidden">
                     <article id="duplicates-input-article" class="duplicates-article">
                         <div>
                             <span>Valores em:</span>
-
                             <input type="radio" id="inputCaseNormal" name="inputCase" checked />
                             <label for="inputCaseNormal">Nenhum</label>
-
                             <input type="radio" id="inputCaseUpper" name="inputCase" />
                             <label for="inputCaseUpper">Maiúsculo</label>
-                        
                             <input type="radio" id="inputCaseLower" name="inputCase" />
                             <label for="inputCaseLower">Minúsculo</label>
                         </div>
-
                         <textarea id="duplicates-input-text" class="duplicates-input-text" placeholder="Coloque a lista de valores aqui" autocomplete="none"></textarea>
-
                         <div>
                             <input type="checkbox" id="inputKeepOne" name="inputKeepOne" />
                             <label for="inputKeepOne">Manter pelo menos 1 valor</label>
@@ -114,43 +100,30 @@
                             <input type="checkbox" id="inputAlphabeticalOrder" name="inputAlphabeticalOrder" />
                             <label for="inputAlphabeticalOrder">Ordem alfabética</label>
                         </div>
-
                         <button id="duplicates-input-ok">Ok</button>
                     </article>
                 </section>
 
-                <!-- section output -->
+                <!-- section output text -->
                 <section id="duplicates-output-section" class="duplicates-section hidden">
                     <article id="duplicates-output-article" class="duplicates-article">
-                        
                         <span id="duplicates-output-before"></span>
                         <span id="duplicates-output-after"></span>
-                        
-                        <div id="duplicates-output-result" style="background-color: rgba(255, 255, 255, 0.285); margin: 2% 0; padding: 2%;">
-                            
-                            <!-- filtered duplicates -->
-
-                        </div>
+                        <div id="duplicates-output-result"></div>
                     </article>
                 </section>
-
             </div>
             <!-- END DUPLICATES -->
 
             <!-- COMPARE TEXT -->
-            <div id="compare-text-content" class="component-content hidden">
-                
-            </div>
+            <div id="compare-text-content" class="component-content hidden"></div>
             <!-- END COMPARE TEXT -->
 
             <!-- CSVS -->
-            <div id="csvs-content" class="component-content hidden">
-                
-            </div>
+            <div id="csvs-content" class="component-content hidden"></div>
             <!-- END CSVS -->
-            
+       
         </div>
-
     </div>
 </body>
 </html>
