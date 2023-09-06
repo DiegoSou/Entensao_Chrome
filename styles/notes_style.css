@@ -46,7 +46,7 @@
     height: 10%;
     padding: 1%;
     font-size: 118%;
-    font-family: monospace;
+    font-family: system-ui;
 }
 
 .new-note-text
@@ -54,6 +54,7 @@
     height: 40%;
     padding: 1%;
     font-size: 118%;
+    font-family: system-ui;
 
     resize: vertical;
 }

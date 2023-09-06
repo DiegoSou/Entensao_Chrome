@@ -14,14 +14,6 @@ $( document ).ready(
                     "duplicates.png",
                     "duplicates-content"
                 ],
-                "compare-text-component": [
-                    "compare-text.png",
-                    "compare-text-content"
-                ],
-                "csvs-component": [
-                    "csvs.png",
-                    "csvs-content"
-                ]
             }
         );
 
@@ -66,7 +58,7 @@ function buildComponent(key, icon, content)
             }
         )
         .prepend(
-            $("<img>", {src: ('pictures/'+icon), style: 'width: 30px; height: 30px'})
+            $("<img>", {src: ('pictures/'+icon), style: 'width: 30px; height: 30px; vertical-align: middle;'})
         )
     );
 }
