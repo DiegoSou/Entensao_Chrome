@@ -51,6 +51,7 @@
 {
     height: 50%;
     resize: vertical;
+    font-family: system-ui;
 }
 
 #duplicates-output-result
