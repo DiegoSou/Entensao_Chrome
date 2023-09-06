@@ -4,22 +4,15 @@ $( document ).ready(
         if (!localStorage.getItem("theme-color")) {localStorage.setItem("theme-color", "#deeaf2");}
         $( "#choose-color-input" ).attr("value", localStorage.getItem("theme-color"));
 
-        const contentByIcon = (
-            {
-                "notes-component": [
-                    "notes.png",
-                    "notes-content"
-                ],
-                "duplicates-component": [
-                    "duplicates.png",
-                    "duplicates-content"
-                ],
-            }
-        );
+        const contentControlButtons = $( ".component-icon-container .component-icon" );
 
-        for(let key of Object.keys(contentByIcon))
+        for(let controlButton of contentControlButtons)
         {
-            buildComponent(key, contentByIcon[key][0], contentByIcon[key][1]);
+            buildComponent(
+                controlButton.id, // div id
+                controlButton.dataset.contentimg, // content image
+                controlButton.dataset.contentid // content id
+            );
         }
 
         //

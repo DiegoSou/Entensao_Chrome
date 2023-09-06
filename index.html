@@ -27,8 +27,9 @@
 
         <!-- Page Control -->
         <div class="component-icon-container">
-            <div id="notes-component" class="component-icon" data-contentid="notes-content" title="Anotações"></div>
-            <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" title="Remover duplicados"></div>
+            <div id="notes-component" class="component-icon" data-contentid="notes-content" data-contentimg="notes.png" title="Anotações"></div>
+            <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" data-contentimg="duplicates.png" title="Duplicados"></div>
+            <div id="drawing-component" class="component-icon" data-contentid="drawing-content" data-contentimg="drawing.png" title="Ideias"></div>
 
             <div style="display: flex; flex-direction: column;">
                 <input id="open-in-tab-input" type="image" src="pictures/op_newtab.svg" style="width: 15px; height: 15px; opacity: 0.5;" title="Open in new tab">
@@ -112,6 +113,12 @@
                 </section>
             </div>
             <!-- END DUPLICATES -->
+
+            <!-- DRAWING -->
+            <div id="drawing-content" class="component-content hidden">
+
+            </div>
+            <!-- END DRAWING -->
         </div>
     </div>
 </body>
