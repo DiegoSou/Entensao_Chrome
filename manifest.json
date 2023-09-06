@@ -23,10 +23,10 @@
 
         "default_popup": "index.html",
         "default_icon": {
-            "16": "./pictures/reeves.png",
-            "32": "./pictures/reeves.png",
-            "48": "./pictures/reeves.png",
-            "128": "./pictures/reeves.png"
+            "16": "./pictures/icon.png",
+            "32": "./pictures/icon.png",
+            "48": "./pictures/icon.png",
+            "128": "./pictures/icon.png"
         }
     },
     
@@ -41,9 +41,9 @@
     },
 
     "icons": {
-        "16": "./pictures/reeves.png",
-        "32": "./pictures/reeves.png",
-        "48": "./pictures/reeves.png",
-        "128": "./pictures/reeves.png"
+        "16": "./pictures/icon.png",
+        "32": "./pictures/icon.png",
+        "48": "./pictures/icon.png",
+        "128": "./pictures/icon.png"
     }
 }

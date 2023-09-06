@@ -98,7 +98,7 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
         .append(
             $("<div>", {style: "display: flex; flex-direction: column"})
             .append(
-                $("<input>", {type: "image", alt: "check", src: "../pictures/check.png", style: "max-width: 20px; max-height: 20px; margin: 3px; align-self: flex-end;"})
+                $("<input>", {type: "image", alt: "check", src: "../pictures/notes/check.png", style: "max-width: 20px; max-height: 20px; margin: 3px; align-self: flex-end;"})
                 .on("click", function () {
                     checked = (checked ? false : true);
                     localStorage.setItem(index+'-info', JSON.stringify({index: index, title: title, description: description, checked: checked}));
@@ -107,7 +107,7 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
                 })
             )
             .append(
-                $("<input>", {type: "image", alt: "trash", src: "../pictures/trash.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
+                $("<input>", {type: "image", alt: "trash", src: "../pictures/notes/trash.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
                 .on("click", function () {
                     if (confirm("Excluir anotação?"))
                     {
@@ -119,7 +119,7 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
                 })
             )
             .append(
-                $("<input>", {type: "image", alt: "copy image", src: "../pictures/copy-img.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
+                $("<input>", {type: "image", alt: "copy image", src: "../pictures/notes/copy-img.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
                 .on("click", async function () {
                     // copy image
                     navigator.clipboard.write([
@@ -127,15 +127,15 @@ function buildNoteCardItem(index, title, description, checked, fileBase64)
                             'image/png': await fetch(fileBase64).then((r) => r.blob())
                         })
                     ]);
-                    $(this).attr("src", "../pictures/copied-img.png");setTimeout(() => {$(this).attr("src", "../pictures/copy-img.png");}, 1500);
+                    $(this).attr("src", "../pictures/notes/copied-img.png");setTimeout(() => {$(this).attr("src", "../pictures/notes/copy-img.png");}, 1500);
                 })
             )
             .append(
-                $("<input>", {type: "image", alt: "copy text", src: "../pictures/copy-text.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
+                $("<input>", {type: "image", alt: "copy text", src: "../pictures/notes/copy-text.png", style: "max-width: 18px; max-height: 18px; margin: 3px; align-self: flex-end;"})
                 .on("click", async function () {
                     // copy description
                     navigator.clipboard.writeText(description);
-                    $(this).attr("src", "../pictures/copied-text.png");setTimeout(() => {$(this).attr("src", "../pictures/copy-text.png");}, 1500);
+                    $(this).attr("src", "../pictures/notes/copied-text.png");setTimeout(() => {$(this).attr("src", "../pictures/notes/copy-text.png");}, 1500);
                 })
             )
         )
