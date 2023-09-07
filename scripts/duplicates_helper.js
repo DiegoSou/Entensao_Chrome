@@ -30,6 +30,7 @@ $( document ).ready(function ()
 
             document.getElementById("duplicates-output-btn").click();
         },
+        
         removeDuplicatesFromList: function (listDuplicates, toUpper, toLower, keep1, alphabeticalOrder) 
         {
             let map = {}; 

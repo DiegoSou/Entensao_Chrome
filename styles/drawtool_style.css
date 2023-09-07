@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+#drawtool-content
+{
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    max-width: 1050px;
+
+    font-family: 'Poppins', sans-serif;
+}
+.drawtool-section
+{
+    background: #fff;
+    border-radius: 7px;
+}
+.tools-board
+{
+    padding: 10px 15px 0;
+    height: fit-content;
+}
+.tools-board .drawtool-row
+{
+    margin-bottom: 20px;
+}
+.drawtool-row .drawtool-options
+{
+    list-style: none;
+    margin: 10px 0 0 5px;
+    padding: 0;
+}
+.drawtool-row .drawtool-options .drawtool-option
+{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.drawtool-option:is(:hover, .drawtool-active) img
+{
+    filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+.drawtool-option :where(span, label)
+{
+    cursor: pointer;
+    color: #5A6168;
+    padding-left: 10px;
+}
+.drawtool-option:is(:hover, .drawtool-active) :where(span, label)
+{
+    color: #4A98F7;
+}
+.drawtool-option #fill-color
+{
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+}
+#fill-color:checked ~ label
+{
+    color: #4A98F7
+}
+.drawtool-option #size-slider
+{
+    width: 100%;
+    height: 5px;
+    margin-top: 10px;
+}
+.drawtool-colors .drawtool-options
+{
+    display: flex;
+    justify-content: space-between;
+}
+.drawtool-colors .drawtool-option
+{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: 3px;
+    position: relative;
+}
+.drawtool-colors .drawtool-option:nth-child(1){background-color: #fff; border: 1px solid #bfbfbf;}
+.drawtool-colors .drawtool-option:nth-child(2){background-color: #000;}
+.drawtool-colors .drawtool-option:nth-child(3){background-color: #E02020;}
+.drawtool-colors .drawtool-option:nth-child(4){background-color: #6DD400;}
+.drawtool-colors .drawtool-option:nth-child(5){background-color: #4A98F7;}
+.drawtool-colors .drawtool-option.selected::before
+{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    height: 12px;
+    width: 12px;
+    background: inherit;
+    border-radius: inherit;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+}
+.drawtool-colors .drawtool-option:first-child.selected::before
+{
+    border-color: #ccc;
+}
+.drawtool-option #drawtool-color-picker
+{
+    opacity: 0;
+    cursor: pointer;
+}
+.drawtool-buttons button
+{
+    cursor: pointer;
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 11px 0;
+    font-size: 0.9rem;
+    margin-bottom: 13px;
+    background: none;
+    border-radius: 5px;
+}
+.drawtool-buttons .drawtool-clear-canvas
+{
+    color: #6C757D;
+    border: 1px solid #6C757D;
+    transition: all 0.3s ease;
+}
+.drawtool-buttons .drawtool-save-img
+{
+    background: #4A98F7;
+    border: 1px solid #4A98F7;
+}
+.drawtool-clear-canvas:hover
+{
+    color: #fff;
+    background: #6C757D;
+}
+.drawtool-board
+{
+    flex: 1;
+    height: 500px;
+    width: 800px;
+}
+#drawtool-canvas
+{
+    height: 500px;
+    width: 800px;
+}

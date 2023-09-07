@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilitários do Chrome</title>
 
-    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="styles/notes_style.css">
     <link rel="stylesheet" href="styles/duplicates_style.css">
+    <link rel="stylesheet" href="styles/drawtool_style.css">
  
     <!-- libs -->
     <script src="scripts/jquery.min.js"></script>
 
+    <script src="index.js"></script>
+    
     <!-- helpers -->
     <script src="scripts/notes_helper.js"></script>
     <script src="scripts/duplicates_helper.js"></script>
+    <script src="scripts/drawtool_helper.js"></script>
     
     <!-- controllers -->
-    <script src="scripts/index_controller.js"></script>
     <script src="scripts/notes_controller.js"></script>
     <script src="scripts/duplicates_controller.js"></script>
+    <script src="scripts/drawtool_controller.js"></script>
 </head>
 
 <body>
@@ -29,7 +33,7 @@
         <div class="component-icon-container">
             <div id="notes-component" class="component-icon" data-contentid="notes-content" data-contentimg="notes/notes.png" title="Anotações"></div>
             <div id="duplicates-component" class="component-icon" data-contentid="duplicates-content" data-contentimg="duplicates/duplicates.png" title="Duplicados"></div>
-            <div id="drawing-component" class="component-icon" data-contentid="drawing-content" data-contentimg="drawing/drawing.png" title="Ideias"></div>
+            <div id="drawtool-component" class="component-icon" data-contentid="drawtool-content" data-contentimg="drawtool/drawtool.png" title="Ideias"></div>
 
             <div style="display: flex; flex-direction: column;">
                 <input id="open-in-tab-input" type="image" src="pictures/op_newtab.svg" style="width: 15px; height: 15px; opacity: 0.5;" title="Open in new tab">
@@ -69,6 +73,7 @@
                 <section id="history-notes-section" class="note-section hidden"><article id="history-notes-article" class="note-article"></article></section>
             </div>
             <!-- END NOTES -->
+
 
             <!-- DUPLICATES -->
             <div id="duplicates-content" class="component-content hidden">
@@ -114,11 +119,70 @@
             </div>
             <!-- END DUPLICATES -->
 
-            <!-- DRAWING -->
-            <div id="drawing-content" class="component-content hidden">
 
+            <!-- DRAWTOOL -->
+            <div id="drawtool-content" class="component-content hidden">
+                <!-- section drawtool control -->
+                <section class="drawtool-section tools-board">
+                    <div class="drawtool-row">
+                        <label class="drawtool-title">Shapes</label>
+                        <ul class="drawtool-options">
+                            <li id="line" class="drawtool-option tool">
+                                <img src="pictures/drawtool/line.svg" alt=""><span>Line</span>
+                            </li>
+                            <li id="rectangle" class="drawtool-option tool">
+                                <img src="pictures/drawtool/rectangle.svg" alt=""><span>Rectangle</span>
+                            </li>
+                            <li id="circle" class="drawtool-option tool">
+                                <img src="pictures/drawtool/circle.svg" alt=""><span>Circle</span>
+                            </li>
+                            <li id="triangle" class="drawtool-option tool">
+                                <img src="pictures/drawtool/triangle.svg" alt=""><span>Triangle</span>
+                            </li>
+                            <li class="drawtool-option">
+                                <input type="checkbox" name="fill-color" id="fill-color"><label for="fill-color">Fill color</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="drawtool-row">
+                        <label class="drawtool-title">Options</label>
+                        <ul class="drawtool-options">
+                            <li id="brush" class="drawtool-option tool drawtool-active">
+                                <img src="pictures/drawtool/brush.svg" alt=""><span>Brush</span>
+                            </li>
+                            <li id="eraser" class="drawtool-option tool">
+                                <img src="pictures/drawtool/eraser.svg" alt=""><span>Eraser</span>
+                            </li>
+                            <li class="drawtool-option">
+                                <input type="range" name="size-slider" id="size-slider" min="1" max="30" value="5">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="drawtool-row drawtool-colors">
+                        <label class="drawtool-title">Colors</label>
+                        <ul class="drawtool-options">
+                            <li class="drawtool-option" style="margin-right: 3px;"></li>
+                            <li class="drawtool-option selected" style="margin-right: 3px;"></li>
+                            <li class="drawtool-option" style="margin-right: 3px;"></li>
+                            <li class="drawtool-option" style="margin-right: 3px;"></li>
+                            <li class="drawtool-option">
+                                <input type="color" name="drawtool-color-picker" id="drawtool-color-picker" value="#4A98F7">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="drawtool-row drawtool-buttons" style="margin-bottom: 0;">
+                        <button class="drawtool-clear-canvas">Clear canvas</button>
+                        <button class="drawtool-save-img">Save as image</button>
+                    </div>
+                </section>
+        
+                <!-- section drawtool board -->
+                <section class="drawtool-section drawtool-board">
+                    <canvas id="drawtool-canvas" width="800" height="500"></canvas>
+                </section>
             </div>
-            <!-- END DRAWING -->
+            <!-- END DRAWTOOL -->
+        
         </div>
     </div>
 </body>

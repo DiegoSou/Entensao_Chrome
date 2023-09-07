@@ -1,20 +1,15 @@
+const defaultBackgroundColor = "#deeaf2";
+
 $( document ).ready(
     function() 
     {
-        if (!localStorage.getItem("theme-color")) {localStorage.setItem("theme-color", "#deeaf2");}
-        $( "#choose-color-input" ).attr("value", localStorage.getItem("theme-color"));
-
-        const contentControlButtons = $( ".component-icon-container .component-icon" );
-
+        const contentControlButtons = $(".component-icon-container .component-icon");
+        
         for(let controlButton of contentControlButtons)
         {
-            buildComponent(
-                controlButton.id, // div id
-                controlButton.dataset.contentimg, // content image
-                controlButton.dataset.contentid // content id
-            );
+            buildComponent(controlButton.id, controlButton.dataset.contentimg, controlButton.dataset.contentid);
         }
-
+        
         //
         // handlers
         //
@@ -32,7 +27,7 @@ $( document ).ready(
         // auto triggers
         //
 
-        $( "#choose-color-input" ).trigger("change");
+        setDefaultBackgroundColor();
     }
 );
 
@@ -40,18 +35,26 @@ function buildComponent(key, icon, content)
 {
     $( ("#"+key) ).prepend(
         $("<button>", {class: 'button-component-icon'})
-        .click(
-            function() 
-            {
-                $('.button-component-icon').removeClass('button-component-icon-active');
-                $(this).addClass('button-component-icon-active');
+        .on("click", function () {
+            $('.button-component-icon').removeClass('button-component-icon-active');
+            $(this).addClass('button-component-icon-active');
 
-                $('.component-content').addClass('hidden');
-                $( ("#"+content) ).removeClass('hidden');
-            }
-        )
+            $('.component-content').addClass('hidden');
+            $( ("#"+content) ).removeClass('hidden');
+        })
         .prepend(
             $("<img>", {src: ('pictures/'+icon), style: 'width: 30px; height: 30px; vertical-align: middle;'})
         )
     );
+}
+
+function setDefaultBackgroundColor()
+{
+    if (!localStorage.getItem("theme-color")) 
+    {
+        localStorage.setItem("theme-color", defaultBackgroundColor);
+    }
+
+    $( "#choose-color-input" ).attr("value", localStorage.getItem("theme-color"));
+    $( "#choose-color-input" ).trigger("change");
 }
